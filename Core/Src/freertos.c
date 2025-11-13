@@ -235,7 +235,7 @@ void StartTaskKEY2(void const * argument)
 			osDelay(20);
 			if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1) == GPIO_PIN_RESET)
 			{
-				printf("KEY1 pressed. \r\n");
+				printf("KEY2 pressed. \r\n");
 				if (taskled2_flag == 0)
 				{
 					osThreadSuspend(taskLED2Handle);
