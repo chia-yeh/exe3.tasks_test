@@ -192,18 +192,18 @@ void StartTaskKEY1(void const * argument)
 			osDelay(20);
 			if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == GPIO_PIN_RESET)
 			{
-				printf("KEY1 pressed. \r\n");
+				printf("按鍵1已按下。\r\n");
 				if (taskLED1Handle == NULL)
 				{
-					printf("taskled1 not exist.Will create taskled1!\r\n");
-					osThreadDef(taskLED1, StartTaskLED1, osPriorityNormal, 0, 128); 
+					printf("任務LED1不存在。將創建任務LED1！\r\n");
+					osThreadDef(taskLED1, StartTaskLED1, osPriorityNormal, 0, 128);
 					taskLED1Handle = osThreadCreate(osThread(taskLED1), NULL);
 					if (taskLED1Handle!=NULL)
-						printf("taskled1 created!\r\n");
+						printf("任務LED1已創建！\r\n");
 				}
 				else
 				{
-					printf("Terminate taskLed1.\r\n");
+					printf("終止任務LED1。\r\n");
 					osThreadTerminate(taskLED1Handle);
 					taskLED1Handle=NULL;
 				}
@@ -235,17 +235,17 @@ void StartTaskKEY2(void const * argument)
 			osDelay(20);
 			if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1) == GPIO_PIN_RESET)
 			{
-				printf("KEY1 pressed. \r\n");
+				printf("按鍵2已按下。\r\n");
 				if (taskled2_flag == 0)
 				{
 					osThreadSuspend(taskLED2Handle);
-					printf("taskled2 suspended.\r\n");
+					printf("任務LED2已暫停。\r\n");
 					taskled2_flag=1;
 				}
 				else
 				{
 					osThreadResume(taskLED2Handle);
-					printf("taskled2 resume.\r\n");
+					printf("任務LED2已恢復。\r\n");
 					taskled2_flag=0;
 				}
 			}
@@ -270,7 +270,7 @@ void StartTask05(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-		printf("Tasks switching.\r\n");
+		printf("任務切換中。\r\n");
     osDelay(5000);
   }
   /* USER CODE END StartTask05 */
